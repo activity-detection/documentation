@@ -42,12 +42,33 @@ Request parameters
 - *video-name* - video name which will be assigned in database
 - *description* - description for video (optional)
 - *relative-path* - path in which video will be saved in backend's file system.
-
+- *details* - details json (optional)  
+details json structure (by example):
+```json
+{
+  "details": {
+    "detections": [
+      {
+        "detectionLabel": "test", //Label of detection
+        "detectionTimestamp": { "from": "PT1S", "to": "PT2S" } //Timestamp of video ex. PT1S -> 1 second
+      }
+    ]
+  }
+}
+```
 Saves specified video.
 
-**Example request**  
+**Example request without details**  
 `curl -X POST http://localhost:8080/videos/upload -F "file=@C:\Users\User\Videos\test_video.mov" -F "video-name=VIDEO_NAME" -F "description=DESCRIPTION" -F "relative-path=saved_video.mov"       `
-
+**Example request with details from json in disk space**
+```
+curl.exe -i -X POST http://localhost:8080/videos/upload `
+  -F "file=@C:\Users\Videos\test_video1.mov" `
+  -F "video-name=new_video" `
+  -F "description=DESCRIPTION" `
+  -F "relative-path=saved_video.mov" `
+  -F "details=@C:\Users\testJson.json;type=application/json"
+```
 ## Frontend endpoint (temporary overview build)
 ##### GET / 
 Check if frontend is running.
