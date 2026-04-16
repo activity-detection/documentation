@@ -1,4 +1,8 @@
 # Activity Detector
+
+## Architecture
+See [`diagrams/`](diagrams/README.md) for Mermaid diagrams of the deployment topology, database schema, and detector pipeline.
+
 ## Notes
 - Supported video extensions: mp4, mov
 
