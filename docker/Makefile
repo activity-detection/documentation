@@ -29,8 +29,11 @@ down:
 logs:
 	docker-compose logs -f
 
-clean:
+clean-dev:
 	docker-compose -f docker-compose.dev.yml down -v
+
+clean-prod:
+	docker-compose -f docker-compose.yml down -v
 
 restart-backend:
 	docker compose restart backend
